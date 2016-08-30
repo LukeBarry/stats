@@ -3,6 +3,7 @@ import pandas as pd
 import scipy.stats as stats
 import collections
 
+
 loansData = pd.read_csv('https://github.com/Thinkful-Ed/curric-data-001-data-sets/raw/master/loans/loansData.csv')  # load the data
 
 loansData.dropna(inplace=True)  # remove rows with null values
@@ -19,7 +20,6 @@ graph = stats.probplot(loansData['Amount.Funded.By.Investors'], dist="norm", plo
 plt.show()
 
 # apply chi squared test to lending data
-from scipy import stats
 # Load the reduced version of the Lending Club Dataset
 loansData = pd.read_csv('https://github.com/Thinkful-Ed/curric-data-001-data-sets/raw/master/loans/loansData.csv')
 # Drop null rows
@@ -27,10 +27,19 @@ loansData.dropna(inplace=True)
 # Apply the collections.Counter() method on the number of open credit lines in the Loans data (Open.CREDIT.Lines)
 # to get counts of observations for each number of credit lines.
 freq = collections.Counter(loansData['Open.CREDIT.Lines'])
+#print (freq)
 
 plt.figure()
 plt.bar(freq.keys(), freq.values(), width=1)
 plt.show()
+
+chi, p = stats.chisquare(freq.values())
+print (p)
+print(chi)
+
+
+
+
 
 
 
