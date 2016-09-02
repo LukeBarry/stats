@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import statsmodels.api as sm
 
-drc = pd.read_csv('C:\Users\lbarry\Desktop\drc.csv')
+drc = pd.read_csv('C:\Users\lbarry\Dropbox\Programming Notes\Thinkful\data sci\data_files\drc.csv')
 print(drc[0:3])  # reference 3 rows of data
 
 #drc = drc[drc["Grade"] == 8]  # filter the data
@@ -23,21 +23,25 @@ plt.figure()
 a = pd.scatter_matrix(drc, alpha=0.05, figsize=(10,10), diagonal='hist')  # multiple scatter matrix - all columns must be number
 plt.show()
 
-type = drc["Type"]
-scale = drc["scale"]
+#type = drc["Type"]
+pl = drc["pl"]
 grade = drc["FinalGrade"]
 
 # The dependent variable
-y = np.matrix(scale).transpose()
+y = np.matrix(pl).transpose()
 # The independent variables shaped as columns
 x1 = np.matrix(grade).transpose()
-x2 = np.matrix(type).transpose()
+#x2 = np.matrix(type).transpose()
 
 
-x = np.column_stack([x1,x2])
+x = np.column_stack([x1])
 
 X = sm.add_constant(x)
 model = sm.OLS(y,X)
 f = model.fit()
 
 print (f.summary())
+
+
+
+
