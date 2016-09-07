@@ -33,7 +33,6 @@ y = np.matrix(pl).transpose()
 x1 = np.matrix(grade).transpose()
 #x2 = np.matrix(type).transpose()
 
-
 x = np.column_stack([x1])
 
 X = sm.add_constant(x)
