@@ -1,3 +1,4 @@
+
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
@@ -26,7 +27,7 @@ logit = sm.Logit(df['IR_TF'], df[ind_vars])
 result = logit.fit()
 
 coeff = result.params
-print coeff
+print (coeff)
 
 FicoScore = 720
 LoanAmount = 10000
